@@ -10,7 +10,9 @@ public class CaesarCipher implements Cipher {
 		if (key > alphabet.size()) {
 			throw new IllegalArgumentException("Key cannot be greater than alphabet length.");
 		}
-		this.key = key;
+		else {
+			this.key = key;
+		}
 		this.alphabet = alphabet;
 	}
 
