@@ -1,7 +1,7 @@
 package michal.garnczarski.com;
 
 public interface Cipher {
-	public String encrypt();
-	public String decrypt();
+	public String encrypt(String textToEncrypt);
+	public String decrypt(String textToDecrypt);
 }
 

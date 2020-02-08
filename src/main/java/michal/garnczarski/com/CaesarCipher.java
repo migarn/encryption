@@ -17,13 +17,13 @@ public class CaesarCipher implements Cipher {
 	}
 
 	@Override
-	public String encrypt() {
+	public String encrypt(String textToEncrypt) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String decrypt() {
+	public String decrypt(String textToDecrypt) {
 		// TODO Auto-generated method stub
 		return null;
 	}
