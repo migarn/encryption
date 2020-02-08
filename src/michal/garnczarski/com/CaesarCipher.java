@@ -1,5 +1,29 @@
 package michal.garnczarski.com;
 
-public class CaesarCipher {
+import java.util.LinkedList;
+
+public class CaesarCipher implements Cipher {
+	private int key;
+	private LinkedList<String> alphabet;
+	
+	public CaesarCipher(int key, LinkedList<String> alphabet) {
+		if (key > alphabet.size()) {
+			throw new IllegalArgumentException("Key cannot be greater than alphabet length.");
+		}
+		this.key = key;
+		this.alphabet = alphabet;
+	}
+
+	@Override
+	public String encrypt() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String decrypt() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
