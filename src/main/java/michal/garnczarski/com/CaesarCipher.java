@@ -27,5 +27,13 @@ public class CaesarCipher implements Cipher {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public static char[] stringToArray(String string) {
+		char[] stringAsArray = new char[string.length()];
+		for (int i = 0; i < string.length(); i++) {
+			stringAsArray[i] = string.charAt(i);
+		}
+		return stringAsArray;
+	}
 
 }
