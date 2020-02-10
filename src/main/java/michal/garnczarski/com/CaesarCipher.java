@@ -2,7 +2,7 @@ package michal.garnczarski.com;
 
 import java.util.LinkedList;
 
-public class CaesarCipher implements Cipher {
+public class CaesarCipher extends Cipher {
 	private int key;
 	private LinkedList<String> alphabet;
 	
@@ -27,13 +27,4 @@ public class CaesarCipher implements Cipher {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	public static char[] stringToArray(String string) {
-		char[] stringAsArray = new char[string.length()];
-		for (int i = 0; i < string.length(); i++) {
-			stringAsArray[i] = string.charAt(i);
-		}
-		return stringAsArray;
-	}
-
 }
