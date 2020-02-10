@@ -11,5 +11,11 @@ public abstract class Cipher {
 		}
 		return stringAsArray;
 	}
+	
+	public char[] onlyLettersToArray(String string) {
+		
+		String onlyLetters = string.replaceAll("[^A-Za-z]+", "");
+		return stringToArray(onlyLetters);
+	}
 }
 
