@@ -33,7 +33,7 @@ public class CaesarCipherTest {
 	
 	@Test
 	public void stringToArrayTest() {
-		char[] array = {'A','l','a',' ','m','a',' ','k','o','t','a','.'};
+		char[] array = {'A','L','A',' ','M','A',' ','K','O','T','A','.'};
 		
 		Assert.assertArrayEquals(array, caesarCipher.stringToArray("Ala ma kota."));
 	}
