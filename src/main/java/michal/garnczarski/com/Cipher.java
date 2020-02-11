@@ -4,10 +4,11 @@ public abstract class Cipher {
 	protected int key;
 	protected char[] alphabet;
 	
-	public abstract String encrypt(String textToEncrypt);
+	public abstract String encryptWithSpacesAndPunctuation(String textToEncrypt);
+	public abstract String encryptOnlyLetters(String textToEncrypt);	
 	public abstract String decrypt(String textToDecrypt);
 	
-	public char[] stringToArray(String string) {
+	protected char[] stringToArray(String string) {
 		char[] stringAsArray = new char[string.length()];
 		for (int i = 0; i < string.length(); i++) {
 			stringAsArray[i] = Character.toUpperCase(string.charAt(i));
@@ -15,7 +16,7 @@ public abstract class Cipher {
 		return stringAsArray;
 	}
 	
-	public char[] onlyLettersToArray(String string) {
+	protected char[] onlyLettersToArray(String string) {
 		
 		String onlyLetters = string.replaceAll("[^A-Za-z]+", "");
 		return stringToArray(onlyLetters);
