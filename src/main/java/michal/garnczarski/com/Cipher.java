@@ -1,6 +1,9 @@
 package michal.garnczarski.com;
 
 public abstract class Cipher {
+	protected int key;
+	protected char[] alphabet;
+	
 	public abstract String encrypt(String textToEncrypt);
 	public abstract String decrypt(String textToDecrypt);
 	

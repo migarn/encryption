@@ -1,19 +1,21 @@
 package michal.garnczarski.com;
 
-import java.util.LinkedList;
-
 public class CaesarCipher extends Cipher {
-	private int key;
-	private LinkedList<String> alphabet;
 	
-	public CaesarCipher(int key, LinkedList<String> alphabet) {
-		if (key > alphabet.size()) {
+	public CaesarCipher(int key, char[] alphabet) {
+		int alphabetLength = alphabet.length;
+		if (key > alphabetLength) {
 			throw new IllegalArgumentException("Key cannot be greater than alphabet length.");
 		}
 		else {
 			this.key = key;
 		}
-		this.alphabet = alphabet;
+		this.alphabet = new char[2 * alphabetLength];
+		
+		for (int i = 0; i < alphabetLength; i++) {
+			this.alphabet[i] = alphabet[i];
+			this.alphabet[alphabetLength + i] = alphabet[i];		
+		}
 	}
 
 	@Override
