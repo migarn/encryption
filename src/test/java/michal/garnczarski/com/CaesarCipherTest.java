@@ -37,5 +37,12 @@ public class CaesarCipherTest {
 		
 		Assert.assertArrayEquals(array, caesarCipher.stringToArray("Ala ma kota."));
 	}
+	
+	@Test
+	public void onlyLettersToArrayTest() {
+		char[] array = {'A','L','A','M','A','K','O','T','A'};
+		
+		Assert.assertArrayEquals(array, caesarCipher.onlyLettersToArray("Ala ma kota."));
+	}
 
 }
