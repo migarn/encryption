@@ -1,20 +1,23 @@
 package michal.garnczarski.com;
 
+import java.util.ArrayList;
+
 public class CaesarCipher extends Cipher {
 	
-	public CaesarCipher(int key, char[] alphabet) {
-		int alphabetLength = alphabet.length;
+	public CaesarCipher(int key, ArrayList<Character> alphabet) {
+		int alphabetLength = alphabet.size();
 		if (key > alphabetLength) {
 			throw new IllegalArgumentException("Key cannot be greater than alphabet length.");
 		}
 		else {
 			this.key = key;
-		}
-		this.alphabet = new char[2 * alphabetLength];
-		
-		for (int i = 0; i < alphabetLength; i++) {
-			this.alphabet[i] = alphabet[i];
-			this.alphabet[alphabetLength + i] = alphabet[i];		
+			this.alphabet = new ArrayList<Character>();
+			
+			for (int i = 0; i < 2; i++) {
+				for (int j = 0; j < alphabetLength; j++) {
+					this.alphabet.add(alphabet.get(j));
+				}
+			}
 		}
 	}
 
@@ -35,4 +38,11 @@ public class CaesarCipher extends Cipher {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+//	private char[] encryptArray(char[] arrayToEncrypt) {
+//		char[] encryptedArray = new char[arrayToEncrypt.length];
+//		for (int i = 0; i < arrayToEncrypt.length; i++) {
+//			encryptedArray[i] = 
+//		}
+//	}
 }

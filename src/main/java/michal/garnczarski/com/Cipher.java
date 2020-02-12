@@ -1,25 +1,27 @@
 package michal.garnczarski.com;
 
+import java.util.ArrayList;
+
 public abstract class Cipher {
 	protected int key;
-	protected char[] alphabet;
+	protected ArrayList<Character> alphabet;
 	
 	public abstract String encryptWithSpacesAndPunctuation(String textToEncrypt);
 	public abstract String encryptOnlyLetters(String textToEncrypt);	
 	public abstract String decrypt(String textToDecrypt);
 	
-	protected char[] stringToArray(String string) {
-		char[] stringAsArray = new char[string.length()];
+	protected ArrayList<Character> stringToList(String string) {
+		ArrayList<Character> stringAsList = new ArrayList<Character>();
 		for (int i = 0; i < string.length(); i++) {
-			stringAsArray[i] = Character.toUpperCase(string.charAt(i));
+			stringAsList.add(Character.toUpperCase(string.charAt(i)));
 		}
-		return stringAsArray;
+		return stringAsList;
 	}
 	
-	protected char[] onlyLettersToArray(String string) {
+	protected ArrayList<Character> onlyLettersToArray(String string) {
 		
 		String onlyLetters = string.replaceAll("[^A-Za-z]+", "");
-		return stringToArray(onlyLetters);
+		return stringToList(onlyLetters);
 	}
 }
 
