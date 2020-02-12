@@ -20,7 +20,6 @@ public abstract class Cipher {
 	}
 	
 	protected ArrayList<Character> onlyLettersToArray(String string) {
-		
 		String onlyLetters = string.replaceAll("[^A-Za-z]+", "");
 		return stringToList(onlyLetters);
 	}

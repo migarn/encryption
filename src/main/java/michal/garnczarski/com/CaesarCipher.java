@@ -1,6 +1,7 @@
 package michal.garnczarski.com;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CaesarCipher extends Cipher {
 	
@@ -25,8 +26,9 @@ public class CaesarCipher extends Cipher {
 
 	@Override
 	public String encryptWithSpacesAndPunctuation(String textToEncrypt) {
-		// TODO Auto-generated method stub
-		return null;
+		return listToString(encryptDecryptList(stringToList(textToEncrypt), this.alphabet));
+		
+		//String str = Arrays.toString(encryptDecryptList(stringToList(textToEncrypt), this.alphabet).toArray());
 	}
 
 	@Override
@@ -57,5 +59,15 @@ public class CaesarCipher extends Cipher {
 		}
 		
 		return encryptedList;
+	}
+	
+	private String listToString(ArrayList<Character> listToBeConverted) {
+		StringBuilder convertedList = new StringBuilder();
+		
+		for (Character character : listToBeConverted) {
+			convertedList.append(character);
+		}
+		
+		return convertedList.toString();
 	}
 }

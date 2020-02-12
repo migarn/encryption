@@ -39,5 +39,10 @@ public class CaesarCipherTest {
 		List<Character> stringInList = Arrays.asList(stringInArray);
 		Assert.assertEquals(stringInList, caesarCipher.onlyLettersToArray("Ala ma kota."));
 	}
+	
+	@Test
+	public void encryptWithSpacesAndPunctuationTest() {
+		Assert.assertEquals("ACAC, ACAC.", caesarCipher.encryptWithSpacesAndPunctuation("Baba, baba."));
+	}
 
 }
