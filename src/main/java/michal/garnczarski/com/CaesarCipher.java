@@ -1,14 +1,13 @@
 package michal.garnczarski.com;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class CaesarCipher extends Cipher {
 	
 	public CaesarCipher(int key, ArrayList<Character> alphabet) {
 		int alphabetLength = alphabet.size();
-		if (key > alphabetLength) {
-			throw new IllegalArgumentException("Key cannot be greater than alphabet length.");
+		if (key > alphabetLength || key < 0) {
+			throw new IllegalArgumentException("Key cannot be greater than alphabet length nor negative.");
 		}
 		else {
 			this.key = key;
@@ -26,39 +25,50 @@ public class CaesarCipher extends Cipher {
 
 	@Override
 	public String encryptWithSpacesAndPunctuation(String textToEncrypt) {
-		return listToString(encryptDecryptList(stringToList(textToEncrypt), this.alphabet));
-		
-		//String str = Arrays.toString(encryptDecryptList(stringToList(textToEncrypt), this.alphabet).toArray());
+		if (textToEncrypt == null) {
+			throw new IllegalArgumentException("Text to convert cannot be null.");
+		}
+		else {
+			return listToString(encryptDecryptList(stringToList(textToEncrypt), this.alphabet));
+		}		
 	}
 
 	@Override
 	public String encryptOnlyLetters(String textToEncrypt) {
-		// TODO Auto-generated method stub
-		return null;
+		if (textToEncrypt == null) {
+			throw new IllegalArgumentException("Text to convert cannot be null.");
+		}
+		else {
+			return listToString(encryptDecryptList(onlyLettersToArray(textToEncrypt), this.alphabet));
+		}	
 	}
 	
 	@Override
 	public String decrypt(String textToDecrypt) {
-		// TODO Auto-generated method stub
-		return null;
+		if (textToDecrypt == null) {
+			throw new IllegalArgumentException("Text to convert cannot be null.");
+		}
+		else {
+			return listToString(encryptDecryptList(stringToList(textToDecrypt), this.reversedAlphabet));
+		}	
 	}
 	
-	private ArrayList<Character> encryptDecryptList(ArrayList<Character> listToEncrypt, ArrayList<Character> alphabet) {
-		ArrayList<Character> encryptedList = new ArrayList<Character>();
+	private ArrayList<Character> encryptDecryptList(ArrayList<Character> listToEncryptDecrypt, ArrayList<Character> alphabet) {
+		ArrayList<Character> encryptedDecryptedList = new ArrayList<Character>();
 		
-		for (int i = 0; i < listToEncrypt.size(); i++) {
-			char currentCharacter = listToEncrypt.get(i);
+		for (int i = 0; i < listToEncryptDecrypt.size(); i++) {
+			char currentCharacter = listToEncryptDecrypt.get(i);
 			
 			if (alphabet.contains(currentCharacter)) {
 				int indexOfCurrentCharacter = alphabet.indexOf(currentCharacter);
-				encryptedList.add(alphabet.get(indexOfCurrentCharacter + this.key));
+				encryptedDecryptedList.add(alphabet.get(indexOfCurrentCharacter + this.key));
 			}
 			else {
-				encryptedList.add(currentCharacter);
+				encryptedDecryptedList.add(currentCharacter);
 			}
 		}
 		
-		return encryptedList;
+		return encryptedDecryptedList;
 	}
 	
 	private String listToString(ArrayList<Character> listToBeConverted) {
