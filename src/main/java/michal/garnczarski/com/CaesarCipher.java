@@ -39,10 +39,21 @@ public class CaesarCipher extends Cipher {
 		return null;
 	}
 	
-//	private char[] encryptArray(char[] arrayToEncrypt) {
-//		char[] encryptedArray = new char[arrayToEncrypt.length];
-//		for (int i = 0; i < arrayToEncrypt.length; i++) {
-//			encryptedArray[i] = 
-//		}
-//	}
+	private ArrayList<Character> encryptList(ArrayList<Character> listToEncrypt) {
+		ArrayList<Character> encryptedList = new ArrayList<Character>();
+		
+		for (int i = 0; i < listToEncrypt.size(); i++) {
+			char currentCharacter = listToEncrypt.get(i);
+			
+			if (this.alphabet.contains(currentCharacter)) {
+				int indexOfCurrentCharacter = alphabet.indexOf(currentCharacter);
+				encryptedList.add(alphabet.get(indexOfCurrentCharacter + this.key));
+			}
+			else {
+				encryptedList.add(currentCharacter);
+			}
+		}
+		
+		return encryptedList;
+	}
 }
