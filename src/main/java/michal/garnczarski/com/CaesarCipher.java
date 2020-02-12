@@ -12,10 +12,12 @@ public class CaesarCipher extends Cipher {
 		else {
 			this.key = key;
 			this.alphabet = new ArrayList<Character>();
+			this.reversedAlphabet = new ArrayList<Character>();
 			
 			for (int i = 0; i < 2; i++) {
 				for (int j = 0; j < alphabetLength; j++) {
 					this.alphabet.add(alphabet.get(j));
+					this.reversedAlphabet.add(alphabet.get(alphabetLength - 1 - j));
 				}
 			}
 		}
@@ -39,13 +41,13 @@ public class CaesarCipher extends Cipher {
 		return null;
 	}
 	
-	private ArrayList<Character> encryptList(ArrayList<Character> listToEncrypt) {
+	private ArrayList<Character> encryptDecryptList(ArrayList<Character> listToEncrypt, ArrayList<Character> alphabet) {
 		ArrayList<Character> encryptedList = new ArrayList<Character>();
 		
 		for (int i = 0; i < listToEncrypt.size(); i++) {
 			char currentCharacter = listToEncrypt.get(i);
 			
-			if (this.alphabet.contains(currentCharacter)) {
+			if (alphabet.contains(currentCharacter)) {
 				int indexOfCurrentCharacter = alphabet.indexOf(currentCharacter);
 				encryptedList.add(alphabet.get(indexOfCurrentCharacter + this.key));
 			}

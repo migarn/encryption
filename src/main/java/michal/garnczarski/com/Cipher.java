@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public abstract class Cipher {
 	protected int key;
 	protected ArrayList<Character> alphabet;
+	protected ArrayList<Character> reversedAlphabet;
 	
 	public abstract String encryptWithSpacesAndPunctuation(String textToEncrypt);
 	public abstract String encryptOnlyLetters(String textToEncrypt);	
