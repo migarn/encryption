@@ -45,12 +45,12 @@ public class VigenereCipher extends Cipher {
 
 			if (alphabet.contains(currentCharacter)) {
 				int indexOfCurrentCharacter = alphabet.indexOf(currentCharacter);
-				int currentKey = keyList.get(i);
+				int currentKey = keyList.get(keyIndex);
 				encryptedDecryptedList.add(alphabet.get(indexOfCurrentCharacter + currentKey));
+				keyIndex++;
 			} else {
 				encryptedDecryptedList.add(currentCharacter);
 			}
-			keyIndex++;
 			if (keyIndex == keyList.size()) {
 				keyIndex = 0;
 			}
