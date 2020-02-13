@@ -3,6 +3,8 @@ package michal.garnczarski.com;
 import java.util.ArrayList;
 
 public class CaesarCipher extends Cipher {
+	private int key;
+	private ArrayList<Character> reversedAlphabet;
 	
 	public CaesarCipher(int key, ArrayList<Character> alphabet) {
 		int alphabetLength = alphabet.size();
@@ -69,15 +71,5 @@ public class CaesarCipher extends Cipher {
 		}
 		
 		return encryptedDecryptedList;
-	}
-	
-	private String listToString(ArrayList<Character> listToBeConverted) {
-		StringBuilder convertedList = new StringBuilder();
-		
-		for (Character character : listToBeConverted) {
-			convertedList.append(character);
-		}
-		
-		return convertedList.toString();
 	}
 }
