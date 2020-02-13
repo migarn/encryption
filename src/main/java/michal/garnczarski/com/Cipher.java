@@ -25,7 +25,7 @@ public abstract class Cipher {
 	protected String listToString(ArrayList<Character> listToBeConverted) {
 		StringBuilder convertedList = new StringBuilder();
 		
-		for (Character character : listToBeConverted) {
+		for (char character : listToBeConverted) {
 			convertedList.append(character);
 		}
 		

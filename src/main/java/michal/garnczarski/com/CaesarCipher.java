@@ -11,16 +11,15 @@ public class CaesarCipher extends Cipher {
 		if (key > alphabetLength || key < 0) {
 			throw new IllegalArgumentException("Key cannot be greater than alphabet length nor negative.");
 		}
-		else {
-			this.key = key;
-			this.alphabet = new ArrayList<Character>();
-			this.reversedAlphabet = new ArrayList<Character>();
-			
-			for (int i = 0; i < 2; i++) {
-				for (int j = 0; j < alphabetLength; j++) {
-					this.alphabet.add(alphabet.get(j));
-					this.reversedAlphabet.add(alphabet.get(alphabetLength - 1 - j));
-				}
+		
+		this.key = key;
+		this.alphabet = new ArrayList<Character>();
+		this.reversedAlphabet = new ArrayList<Character>();
+		
+		for (int i = 0; i < 2; i++) {
+			for (int j = 0; j < alphabetLength; j++) {
+				this.alphabet.add(alphabet.get(j));
+				this.reversedAlphabet.add(alphabet.get(alphabetLength - 1 - j));
 			}
 		}
 	}
@@ -30,9 +29,8 @@ public class CaesarCipher extends Cipher {
 		if (textToEncrypt == null) {
 			throw new IllegalArgumentException("Text to convert cannot be null.");
 		}
-		else {
-			return listToString(encryptDecryptList(stringToList(textToEncrypt), this.alphabet));
-		}		
+		
+		return listToString(encryptDecryptList(stringToList(textToEncrypt), this.alphabet));
 	}
 
 	@Override
@@ -40,9 +38,8 @@ public class CaesarCipher extends Cipher {
 		if (textToEncrypt == null) {
 			throw new IllegalArgumentException("Text to convert cannot be null.");
 		}
-		else {
-			return listToString(encryptDecryptList(onlyLettersToArray(textToEncrypt), this.alphabet));
-		}	
+		
+		return listToString(encryptDecryptList(onlyLettersToArray(textToEncrypt), this.alphabet));
 	}
 	
 	@Override
@@ -50,9 +47,8 @@ public class CaesarCipher extends Cipher {
 		if (textToDecrypt == null) {
 			throw new IllegalArgumentException("Text to convert cannot be null.");
 		}
-		else {
-			return listToString(encryptDecryptList(stringToList(textToDecrypt), this.reversedAlphabet));
-		}	
+		
+		return listToString(encryptDecryptList(stringToList(textToDecrypt), this.reversedAlphabet));
 	}
 	
 	private ArrayList<Character> encryptDecryptList(ArrayList<Character> listToEncryptDecrypt, ArrayList<Character> alphabet) {

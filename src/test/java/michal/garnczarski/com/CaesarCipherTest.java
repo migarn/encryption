@@ -22,12 +22,12 @@ public class CaesarCipherTest {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testKeyGreaterThanAlphabetLength() {
+	public void keyGreaterThanAlphabetLengthTest() {
 		caesarCipher = new CaesarCipher(4, alphabet);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testKeyNegative() {
+	public void keyNegativeTest() {
 		caesarCipher = new CaesarCipher(-1, alphabet);
 	}
 	
