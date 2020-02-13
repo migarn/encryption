@@ -6,7 +6,7 @@ public class VigenereCipher extends Cipher {
 	private String key;
 	private ArrayList<Integer> keyList;
 	private ArrayList<Character> reversedAlphabet;
-	
+
 	public VigenereCipher(String key, ArrayList<Character> alphabet) {
 		this.keyList = new ArrayList<Integer>();
 		for (int i = 0; i < key.length(); i++) {
@@ -16,12 +16,12 @@ public class VigenereCipher extends Cipher {
 			}
 			this.keyList.add(alphabet.indexOf(keyCharacter));
 		}
-		
+
 		this.key = key;
 		this.alphabet = new ArrayList<Character>();
 		this.reversedAlphabet = new ArrayList<Character>();
 		int alphabetLength = alphabet.size();
-		
+
 		for (int i = 0; i < 2; i++) {
 			for (int j = 0; j < alphabetLength; j++) {
 				this.alphabet.add(alphabet.get(j));
@@ -31,22 +31,27 @@ public class VigenereCipher extends Cipher {
 	}
 
 	@Override
-	public String encryptWithSpacesAndPunctuation(String textToEncrypt) {
-		// TODO Auto-generated method stub
-		return null;
+	protected ArrayList<Character> encryptDecryptList(ArrayList<Character> listToEncryptDecrypt,
+			ArrayList<Character> alphabet) {
+		ArrayList<Character> encryptedDecryptedList = new ArrayList<Character>();
+
+		int keyIndex = 0;
+		for (int i = 0; i < listToEncryptDecrypt.size(); i++) {
+			char currentCharacter = listToEncryptDecrypt.get(i);
+
+			if (alphabet.contains(currentCharacter)) {
+				int indexOfCurrentCharacter = alphabet.indexOf(currentCharacter);
+				int currentKey = keyList.get(i);
+				encryptedDecryptedList.add(alphabet.get(indexOfCurrentCharacter + currentKey));
+			} else {
+				encryptedDecryptedList.add(currentCharacter);
+			}
+			keyIndex++;
+			if (keyIndex == keyList.size()) {
+				keyIndex = 0;
+			}
+		}
+
+		return encryptedDecryptedList;
 	}
-
-	@Override
-	public String encryptOnlyLetters(String textToEncrypt) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String decrypt(String textToDecrypt) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
 }
