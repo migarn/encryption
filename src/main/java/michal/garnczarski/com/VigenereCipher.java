@@ -8,6 +8,10 @@ public class VigenereCipher extends Cipher {
 	private ArrayList<Character> reversedAlphabet;
 
 	public VigenereCipher(String key, ArrayList<Character> alphabet) {
+		if (key == null) {
+			throw new IllegalArgumentException("Key cannot be null.");
+		}
+		
 		this.keyList = new ArrayList<Integer>();
 		for (int i = 0; i < key.length(); i++) {
 			char keyCharacter = Character.toUpperCase(key.charAt(i));

@@ -22,5 +22,10 @@ public class VigenereCipherTest {
 	public void testKeyNotContainedInAlphabet() {
 		vigenereCipher = new VigenereCipher("ala", alphabet);
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testNullKey() {
+		vigenereCipher = new VigenereCipher(null, alphabet);
+	}
 
 }
