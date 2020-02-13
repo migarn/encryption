@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class CaesarCipher extends Cipher {
 	private int key;
-	private ArrayList<Character> reversedAlphabet;
 	
 	public CaesarCipher(int key, ArrayList<Character> alphabet) {
 		int alphabetLength = alphabet.size();
@@ -25,33 +24,7 @@ public class CaesarCipher extends Cipher {
 	}
 
 	@Override
-	public String encryptWithSpacesAndPunctuation(String textToEncrypt) {
-		if (textToEncrypt == null) {
-			throw new IllegalArgumentException("Text to convert cannot be null.");
-		}
-		
-		return listToString(encryptDecryptList(stringToList(textToEncrypt), this.alphabet));
-	}
-
-	@Override
-	public String encryptOnlyLetters(String textToEncrypt) {
-		if (textToEncrypt == null) {
-			throw new IllegalArgumentException("Text to convert cannot be null.");
-		}
-		
-		return listToString(encryptDecryptList(onlyLettersToArray(textToEncrypt), this.alphabet));
-	}
-	
-	@Override
-	public String decrypt(String textToDecrypt) {
-		if (textToDecrypt == null) {
-			throw new IllegalArgumentException("Text to convert cannot be null.");
-		}
-		
-		return listToString(encryptDecryptList(stringToList(textToDecrypt), this.reversedAlphabet));
-	}
-	
-	private ArrayList<Character> encryptDecryptList(ArrayList<Character> listToEncryptDecrypt, ArrayList<Character> alphabet) {
+	protected ArrayList<Character> encryptDecryptList(ArrayList<Character> listToEncryptDecrypt, ArrayList<Character> alphabet) {
 		ArrayList<Character> encryptedDecryptedList = new ArrayList<Character>();
 		
 		for (int i = 0; i < listToEncryptDecrypt.size(); i++) {

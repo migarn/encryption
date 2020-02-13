@@ -4,10 +4,33 @@ import java.util.ArrayList;
 
 public abstract class Cipher {
 	protected ArrayList<Character> alphabet;
+	protected ArrayList<Character> reversedAlphabet;
 	
-	public abstract String encryptWithSpacesAndPunctuation(String textToEncrypt);
-	public abstract String encryptOnlyLetters(String textToEncrypt);	
-	public abstract String decrypt(String textToDecrypt);
+	protected abstract ArrayList<Character> encryptDecryptList(ArrayList<Character> listToEncryptDecrypt, ArrayList<Character> alphabet);
+	
+	public String encryptWithSpacesAndPunctuation(String textToEncrypt) {
+		if (textToEncrypt == null) {
+			throw new IllegalArgumentException("Text to convert cannot be null.");
+		}
+		
+		return listToString(encryptDecryptList(stringToList(textToEncrypt), this.alphabet));
+	}
+
+	public String encryptOnlyLetters(String textToEncrypt) {
+		if (textToEncrypt == null) {
+			throw new IllegalArgumentException("Text to convert cannot be null.");
+		}
+		
+		return listToString(encryptDecryptList(onlyLettersToArray(textToEncrypt), this.alphabet));
+	}
+	
+	public String decrypt(String textToDecrypt) {
+		if (textToDecrypt == null) {
+			throw new IllegalArgumentException("Text to convert cannot be null.");
+		}
+		
+		return listToString(encryptDecryptList(stringToList(textToDecrypt), this.reversedAlphabet));
+	}
 	
 	protected ArrayList<Character> stringToList(String string) {
 		ArrayList<Character> stringAsList = new ArrayList<Character>();
