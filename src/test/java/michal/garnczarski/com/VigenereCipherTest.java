@@ -84,4 +84,37 @@ public class VigenereCipherTest {
 	public void emptyEncryptOnlyLettersTest() {
 		Assert.assertEquals("", vigenereCipher.encryptOnlyLetters(""));
 	}
+
+	@Test
+	public void decryptOnlyLettersTest() {
+		Assert.assertEquals("BABABABA", vigenereCipher.decrypt("ABBCCAAB"));
+	}
+	
+	@Test
+	public void decryptWithSpacesAndPunctuation() {
+		Assert.assertEquals("BABA, BABA.", vigenereCipher.decrypt("Abbc, caab."));
+	}
+	
+	@Test
+	public void keyADecryptTest() {
+		vigenereCipher = new VigenereCipher("a", alphabet);
+		Assert.assertEquals("ACACACAC", vigenereCipher.decrypt("ACACACAC"));
+	}
+	
+	@Test
+	public void keyAaADecryptTest() {
+		vigenereCipher = new VigenereCipher("AaA", alphabet);
+		Assert.assertEquals("ACACACAC", vigenereCipher.decrypt("ACACACAC"));
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void emptyAlphabetDecryptTest() {
+		ArrayList<Character> alphabet = new ArrayList<Character>();
+		vigenereCipher = new VigenereCipher("cba", alphabet);
+	}
+	
+	@Test
+	public void emptyDecryptTest() {
+		Assert.assertEquals("", vigenereCipher.decrypt(""));
+	}
 }

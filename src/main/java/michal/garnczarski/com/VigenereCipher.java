@@ -3,9 +3,7 @@ package michal.garnczarski.com;
 import java.util.ArrayList;
 
 public class VigenereCipher extends Cipher {
-	private String key;
 	private ArrayList<Integer> keyList;
-	private ArrayList<Character> reversedAlphabet;
 
 	public VigenereCipher(String key, ArrayList<Character> alphabet) {
 		if (key == null) {
@@ -21,7 +19,6 @@ public class VigenereCipher extends Cipher {
 			this.keyList.add(alphabet.indexOf(keyCharacter));
 		}
 
-		this.key = key;
 		this.alphabet = new ArrayList<Character>();
 		this.reversedAlphabet = new ArrayList<Character>();
 		int alphabetLength = alphabet.size();
@@ -35,8 +32,7 @@ public class VigenereCipher extends Cipher {
 	}
 
 	@Override
-	protected ArrayList<Character> encryptDecryptList(ArrayList<Character> listToEncryptDecrypt,
-			ArrayList<Character> alphabet) {
+	protected ArrayList<Character> encryptDecryptList(ArrayList<Character> listToEncryptDecrypt, ArrayList<Character> alphabet) {
 		ArrayList<Character> encryptedDecryptedList = new ArrayList<Character>();
 
 		int keyIndex = 0;
