@@ -56,5 +56,32 @@ public class VigenereCipherTest {
 	public void emptyEncryptWithSpacesAndPunctuationTest() {
 		Assert.assertEquals("", vigenereCipher.encryptWithSpacesAndPunctuation(""));
 	}
-
+	
+	@Test
+	public void encryptOnlyLettersTest() {
+		Assert.assertEquals("ABBCCAAB", vigenereCipher.encryptOnlyLetters("Baba, baba."));
+	}
+	
+	@Test
+	public void keyAEncryptOnlyLettersTest() {
+		vigenereCipher = new VigenereCipher("a", alphabet);
+		Assert.assertEquals("BABABABA", vigenereCipher.encryptOnlyLetters("Baba, baba."));
+	}
+	
+	@Test
+	public void keyAaAEncryptOnlyLettersTest() {
+		vigenereCipher = new VigenereCipher("AaA", alphabet);
+		Assert.assertEquals("BABABABA", vigenereCipher.encryptOnlyLetters("Baba, baba."));
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void emptyAlphabetEncryptOnlyLettersTest() {
+		ArrayList<Character> alphabet = new ArrayList<Character>();
+		vigenereCipher = new VigenereCipher("cba", alphabet);
+	}
+	
+	@Test
+	public void emptyEncryptOnlyLettersTest() {
+		Assert.assertEquals("", vigenereCipher.encryptOnlyLetters(""));
+	}
 }
