@@ -4,7 +4,11 @@ public class Main {
 	static UIScanner uIScanner = new UIScanner();
 
 	public static void main(String[] args) {
-		System.out.println("Program enables encrypting and decrypting a given text by means of two ciphers: Caesar cipher and Vigenere cipher.");
+		System.out.println("This application enables encrypting and decrypting given text by means of two ciphers: Caesar cipher and Vigenere cipher.");
+		mainMenu();
+	}
+	
+	public static void mainMenu() {
 		boolean inLoop = true;
 
 		while (inLoop) {
@@ -17,6 +21,7 @@ public class Main {
 					decrypt();
 					break;
 				case 3:
+					System.out.println("\nApplication terminated.");
 					inLoop = false;
 					break;
 			}
