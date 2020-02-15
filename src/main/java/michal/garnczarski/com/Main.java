@@ -43,7 +43,28 @@ public class Main {
 	}
 	
 	public static void decrypt() {
+		int choice = uIScanner.scanSelectionList("\nType:\n1 - to use Caesar cipher\n2 - to use Vigenere cipher\n3 - to return", 1, 2, 3);
+		switch (choice) {
+			case 1:
+				decryptInCaesarCipher();
+				break;
+			case 2:
+				decryptInVigenereCipher();
+				break;
+			case 3:
+				break;
+		}
 
+	}
+
+	private static void decryptInVigenereCipher() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void decryptInCaesarCipher() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	private static void encryptInVigenereCipher() {
