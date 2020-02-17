@@ -13,66 +13,45 @@ public class Main {
 
 		while (inLoop) {
 			int choice = uIScanner.scanSelectionList("\nType:\n1 - to encrypt text\n2 - to decrypt text\n3 - to terminate", 1, 2, 3);
-			switch (choice) {
-				case 1:
-					encrypt();
-					break;
-				case 2:
-					decrypt();
-					break;
-				case 3:
-					System.out.println("\nApplication terminated.");
-					inLoop = false;
-					break;
+			
+			if (choice == 1) {
+				encryptDecryptMenu("encrypt");
+			}
+			else if (choice == 2) {
+				encryptDecryptMenu("decrypt");
+			}
+			else if (choice == 3) {
+				System.out.println("\nApplication terminated.");
+				inLoop = false;
 			}
 		}
 	}
 
-	public static void encrypt() {
+	public static void encryptDecryptMenu(String mode) {
 		int choice = uIScanner.scanSelectionList("\nType:\n1 - to use Caesar cipher\n2 - to use Vigenere cipher\n3 - to return", 1, 2, 3);
-		switch (choice) {
-			case 1:
-				encryptInCaesarCipher();
-				break;
-			case 2:
-				encryptInVigenereCipher();
-				break;
-			case 3:
-				break;
+		
+		if (choice == 1 && mode.equals("encrypt")) {
+			encryptMenu("caesar");
+		}
+		else if (choice == 1 && mode.equals("decrypt")) {
+			decryptMenu("caesar");
+		}
+		if (choice == 2 && mode.equals("encrypt")) {
+			encryptMenu("vigenere");
+		}
+		else if (choice == 2 && mode.equals("decrypt")) {
+			decryptMenu("vigenere");
+		}
+		else if (choice == 3) {
 		}
 	}
-	
-	public static void decrypt() {
-		int choice = uIScanner.scanSelectionList("\nType:\n1 - to use Caesar cipher\n2 - to use Vigenere cipher\n3 - to return", 1, 2, 3);
-		switch (choice) {
-			case 1:
-				decryptInCaesarCipher();
-				break;
-			case 2:
-				decryptInVigenereCipher();
-				break;
-			case 3:
-				break;
-		}
 
-	}
-
-	private static void decryptInVigenereCipher() {
+	private static void decryptMenu(String string) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	private static void decryptInCaesarCipher() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private static void encryptInVigenereCipher() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private static void encryptInCaesarCipher() {
+	private static void encryptMenu(String string) {
 		// TODO Auto-generated method stub
 		
 	}
