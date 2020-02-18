@@ -9,8 +9,18 @@ public class AlphabetsList {
 		this.alphabets = new ArrayList<Alphabet>();
 	}
 
-	public ArrayList<Alphabet> getAlphabet() {
+	public ArrayList<Alphabet> getAlphabets() {
 		return alphabets;
+	}
+
+	public void setAlphabets(ArrayList<Alphabet> alphabets) {
+		this.alphabets = alphabets;
+	}
+
+
+
+	public String getAlphabetName(int alphabetIndex) {
+		return alphabets.get(alphabetIndex).getName();
 	}
 	
 	public void addAlphabet(Alphabet alphabet) {

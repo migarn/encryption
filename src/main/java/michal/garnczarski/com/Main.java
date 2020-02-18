@@ -44,27 +44,65 @@ public class Main {
 		int choice = uIScanner.scanSelectionList("\nType:\n1 - to use Caesar cipher\n2 - to use Vigenere cipher\n3 - to return", 1, 2, 3);
 		
 		if (choice == 1 && mode == 'e') {
-			encryptMenu("caesar");
+			chooseAlphabetMenu('e', 'c');
 		}
 		else if (choice == 1 && mode == 'd') {
-			decryptMenu("caesar");
+			chooseAlphabetMenu('d', 'c');
 		}
 		if (choice == 2 && mode == 'e') {
-			encryptMenu("vigenere");
+			chooseAlphabetMenu('e', 'v');
 		}
 		else if (choice == 2 && mode == 'd') {
-			decryptMenu("vigenere");
+			chooseAlphabetMenu('d', 'v');
 		}
 		else if (choice == 3) {
 		}
 	}
 
-	private static void encryptMenu(String string) {
+	private static void chooseAlphabetMenu(char c, char d) {
+		
+		
+		// poprawiæ nazwy
+		
+		int arraySize = alphabetsList.getAlphabets().size() + 1;
+		int[] indices = new int[arraySize];
+		
+		StringBuilder instruction = new StringBuilder("\nType:");
+		for (int i = 0; i < arraySize - 1; i++) {
+			indices[i] = i;
+			instruction.append("\n" + (i + 1) + " - to use " + alphabetsList.getAlphabetName(i));
+		}
+		instruction.append("\n" + arraySize + " - to return");
+		
+		String instr = instruction.toString();
+
+		
+		int choice = uIScanner.scanSelectionList(instr, indices);
+		 
+		
+	}
+
+	private static void typeTextMenu(char encryptDecryptMode, char cipherMode) {
+		int choice = uIScanner.scanSelectionList("\nType:\n1 - to type text\n2 - to return", 1, 2);
+		
+		if (choice == 1) {
+			String textToEncryptDecrypt = uIScanner.scanString("/nPlease type text to convert:");
+			
+			if (encryptDecryptMode == 'e' && cipherMode == 'c') {
+				
+			}
+			
+		}
+		else if (choice == 2) {
+		}		
+	}
+
+	private static void encryptMenu(char mode) {
 		// TODO Auto-generated method stub
 		
 	}
 	
-	private static void decryptMenu(String string) {
+	private static void decryptMenu(char mode) {
 		// TODO Auto-generated method stub
 		
 	}
