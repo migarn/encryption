@@ -46,12 +46,12 @@ public class Main {
 		}
 	}
 
-	private static void decryptMenu(String string) {
+	private static void encryptMenu(String string) {
 		// TODO Auto-generated method stub
 		
 	}
-
-	private static void encryptMenu(String string) {
+	
+	private static void decryptMenu(String string) {
 		// TODO Auto-generated method stub
 		
 	}
