@@ -15,10 +15,10 @@ public class Main {
 			int choice = uIScanner.scanSelectionList("\nType:\n1 - to encrypt text\n2 - to decrypt text\n3 - to terminate", 1, 2, 3);
 			
 			if (choice == 1) {
-				encryptDecryptMenu("encrypt");
+				encryptDecryptMenu('e');
 			}
 			else if (choice == 2) {
-				encryptDecryptMenu("decrypt");
+				encryptDecryptMenu('d');
 			}
 			else if (choice == 3) {
 				System.out.println("\nApplication terminated.");
@@ -27,19 +27,19 @@ public class Main {
 		}
 	}
 
-	public static void encryptDecryptMenu(String mode) {
+	public static void encryptDecryptMenu(char mode) {
 		int choice = uIScanner.scanSelectionList("\nType:\n1 - to use Caesar cipher\n2 - to use Vigenere cipher\n3 - to return", 1, 2, 3);
 		
-		if (choice == 1 && mode.equals("encrypt")) {
+		if (choice == 1 && mode == 'e') {
 			encryptMenu("caesar");
 		}
-		else if (choice == 1 && mode.equals("decrypt")) {
+		else if (choice == 1 && mode == 'd') {
 			decryptMenu("caesar");
 		}
-		if (choice == 2 && mode.equals("encrypt")) {
+		if (choice == 2 && mode == 'e') {
 			encryptMenu("vigenere");
 		}
-		else if (choice == 2 && mode.equals("decrypt")) {
+		else if (choice == 2 && mode == 'd') {
 			decryptMenu("vigenere");
 		}
 		else if (choice == 3) {
