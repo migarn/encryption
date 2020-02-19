@@ -13,30 +13,11 @@ public class AlphabetsList {
 		return alphabets;
 	}
 
-	public void setAlphabets(ArrayList<Alphabet> alphabets) {
-		this.alphabets = alphabets;
-	}
-
-
-
 	public String getAlphabetName(int alphabetIndex) {
 		return alphabets.get(alphabetIndex).getName();
 	}
 	
 	public void addAlphabet(Alphabet alphabet) {
 		this.alphabets.add(alphabet);
-	}
-	
-	public int[] alphabetsIndices() {
-		// wywaliæ?
-		
-		int arraySize = this.alphabets.size();
-		int[] indices = new int[arraySize];
-		
-		for (int i = 0; i < arraySize; i++) {
-			indices[i] = i;
-		}
-		
-		return indices;
 	}
 }

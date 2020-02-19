@@ -29,40 +29,59 @@ public class UserInterface {
 	}
 
 	public void encryptDecryptMenu(char encryptDecryptMode) {
-		int choice = uIScanner.scanSelectionList("\nType:\n1 - to use Caesar cipher\n2 - to use Vigenere cipher\n3 - to return", 1, 2, 3);
+		boolean inLoop = true;
 		
-		if (choice == 1 && encryptDecryptMode == 'e') {
-			chooseAlphabetMenu('e', 'c');
-		}
-		else if (choice == 1 && encryptDecryptMode == 'd') {
-			chooseAlphabetMenu('d', 'c');
-		}
-		if (choice == 2 && encryptDecryptMode == 'e') {
-			chooseAlphabetMenu('e', 'v');
-		}
-		else if (choice == 2 && encryptDecryptMode == 'd') {
-			chooseAlphabetMenu('d', 'v');
-		}
-		else if (choice == 3) {
+		while (inLoop) {
+			int choice = uIScanner.scanSelectionList("\nType:\n1 - to use Caesar cipher\n2 - to use Vigenere cipher\n3 - to return", 1, 2, 3);
+			
+			if (choice == 1 && encryptDecryptMode == 'e') {
+				chooseAlphabetMenu('e', 'c');
+			}
+			else if (choice == 1 && encryptDecryptMode == 'd') {
+				chooseAlphabetMenu('d', 'c');
+			}
+			if (choice == 2 && encryptDecryptMode == 'e') {
+				chooseAlphabetMenu('e', 'v');
+			}
+			else if (choice == 2 && encryptDecryptMode == 'd') {
+				chooseAlphabetMenu('d', 'v');
+			}
+			else if (choice == 3) {
+				inLoop = false;
+			}
 		}
 	}
 
 	private void chooseAlphabetMenu(char encryptDecryptMode, char cipherMode) {
-		int menuSize = alphabetsList.getAlphabets().size() + 1;
-		int[] menuChoices = new int[menuSize];
+		boolean inLoop = true;
 		
-		StringBuilder buildInstruction = new StringBuilder("\nType:");
-		for (int i = 0; i < menuSize - 1; i++) {
-			menuChoices[i] = i;
-			buildInstruction.append("\n" + (i + 1) + " - to use " + alphabetsList.getAlphabetName(i));
+		while (inLoop) {
+			int menuSize = alphabetsList.getAlphabets().size() + 1;
+			int[] menuChoices = new int[menuSize];
+					
+			StringBuilder buildInstruction = new StringBuilder("\nType:");
+			for (int i = 0; i < menuSize - 1; i++) {
+				menuChoices[i] = i + 1;
+				buildInstruction.append("\n" + (i + 1) + " - to use " + alphabetsList.getAlphabetName(i));
+			}
+			
+			menuChoices[menuSize - 1] = menuSize;
+			buildInstruction.append("\n" + menuSize + " - to return");
+			String instruction = buildInstruction.toString();
+			
+			int choice = uIScanner.scanSelectionList(instruction, menuChoices);
+			
+			if (choice > 0 && choice < menuSize) {
+				typeKeyMenu(encryptDecryptMode, cipherMode, alphabetsList.getAlphabets().get(choice - 1));
+			}
+			if (choice == menuSize) {
+				inLoop = false;
+			}
 		}
-		buildInstruction.append("\n" + menuSize + " - to return");
-		
-		String instruction = buildInstruction.toString();
+	}
 
-		
-		int choice = uIScanner.scanSelectionList(instruction, menuChoices);
-		 
+	private void typeKeyMenu(char encryptDecryptMode, char cipherMode, Alphabet alphabet) {
+		// TODO Auto-generated method stub
 		
 	}
 
