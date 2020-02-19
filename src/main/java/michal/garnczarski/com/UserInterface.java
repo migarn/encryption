@@ -134,7 +134,7 @@ public class UserInterface {
 			else {
 				try {
 					if (encryptDecryptMode == 'e') {
-						encryptMenu(cipher, text);
+						return encryptMenu(cipher, text);
 					}
 					else {
 						System.out.println("\nDecrypted text:\n\n" + cipher.decrypt(text));
@@ -151,7 +151,23 @@ public class UserInterface {
 	}
 
 	private boolean encryptMenu(Cipher cipher, String text) {
-		return true;
+		boolean inLoop = true;
 		
+		while (inLoop) {
+			int choice = uIScanner.scanSelectionList("\nType:\n1 - to maintain spaces and punctuation\n2 - to omit spaces and punctuation\n3 - to return", 1, 2, 3);
+			
+			if (choice == 1) {
+				System.out.println("\nEncrypted text:\n\n" + cipher.encryptWithSpacesAndPunctuation(text));
+				return false;
+			}
+			else if (choice == 2) {
+				System.out.println("\nEncrypted text:\n\n" + cipher.encryptOnlyLetters(text));
+				return false;
+			}
+			else if (choice == 3) {
+				inLoop = false;
+			}
+		}
+		return true;
 	}
 }
