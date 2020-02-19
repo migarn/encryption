@@ -28,44 +28,40 @@ public class UserInterface {
 		}
 	}
 
-	public void encryptDecryptMenu(char mode) {
+	public void encryptDecryptMenu(char encryptDecryptMode) {
 		int choice = uIScanner.scanSelectionList("\nType:\n1 - to use Caesar cipher\n2 - to use Vigenere cipher\n3 - to return", 1, 2, 3);
 		
-		if (choice == 1 && mode == 'e') {
+		if (choice == 1 && encryptDecryptMode == 'e') {
 			chooseAlphabetMenu('e', 'c');
 		}
-		else if (choice == 1 && mode == 'd') {
+		else if (choice == 1 && encryptDecryptMode == 'd') {
 			chooseAlphabetMenu('d', 'c');
 		}
-		if (choice == 2 && mode == 'e') {
+		if (choice == 2 && encryptDecryptMode == 'e') {
 			chooseAlphabetMenu('e', 'v');
 		}
-		else if (choice == 2 && mode == 'd') {
+		else if (choice == 2 && encryptDecryptMode == 'd') {
 			chooseAlphabetMenu('d', 'v');
 		}
 		else if (choice == 3) {
 		}
 	}
 
-	private void chooseAlphabetMenu(char c, char d) {
+	private void chooseAlphabetMenu(char encryptDecryptMode, char cipherMode) {
+		int menuSize = alphabetsList.getAlphabets().size() + 1;
+		int[] menuChoices = new int[menuSize];
 		
-		
-		// poprawiæ nazwy
-		
-		int arraySize = alphabetsList.getAlphabets().size() + 1;
-		int[] indices = new int[arraySize];
-		
-		StringBuilder instruction = new StringBuilder("\nType:");
-		for (int i = 0; i < arraySize - 1; i++) {
-			indices[i] = i;
-			instruction.append("\n" + (i + 1) + " - to use " + alphabetsList.getAlphabetName(i));
+		StringBuilder buildInstruction = new StringBuilder("\nType:");
+		for (int i = 0; i < menuSize - 1; i++) {
+			menuChoices[i] = i;
+			buildInstruction.append("\n" + (i + 1) + " - to use " + alphabetsList.getAlphabetName(i));
 		}
-		instruction.append("\n" + arraySize + " - to return");
+		buildInstruction.append("\n" + menuSize + " - to return");
 		
-		String instr = instruction.toString();
+		String instruction = buildInstruction.toString();
 
 		
-		int choice = uIScanner.scanSelectionList(instr, indices);
+		int choice = uIScanner.scanSelectionList(instruction, menuChoices);
 		 
 		
 	}

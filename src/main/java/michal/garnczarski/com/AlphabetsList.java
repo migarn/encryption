@@ -28,6 +28,8 @@ public class AlphabetsList {
 	}
 	
 	public int[] alphabetsIndices() {
+		// wywaliæ?
+		
 		int arraySize = this.alphabets.size();
 		int[] indices = new int[arraySize];
 		
