@@ -81,23 +81,49 @@ public class UserInterface {
 	}
 
 	private void typeKeyMenu(char encryptDecryptMode, char cipherMode, Alphabet alphabet) {
-		// TODO Auto-generated method stub
+		boolean inLoop = true;
+		Cipher cipher;
 		
-	}
-
-	private void typeTextMenu(char encryptDecryptMode, char cipherMode) {
-		int choice = uIScanner.scanSelectionList("\nType:\n1 - to type text\n2 - to return", 1, 2);
-		
-		if (choice == 1) {
-			String textToEncryptDecrypt = uIScanner.scanString("/nPlease type text to convert:");
-			
-			if (encryptDecryptMode == 'e' && cipherMode == 'c') {
-				
+		while (inLoop) {
+			String key = uIScanner.scanString("\nType key or type -1 to return:");
+						
+			if (key.equals("-1")) {
+				inLoop = false;
 			}
 			
+			else {
+				try {
+					if (cipherMode == 'c') {
+						int intKey = Integer.parseInt(key);
+						cipher = new CaesarCipher(intKey, alphabet.getSigns());
+						typeTextMenu(encryptDecryptMode, cipher);
+					}
+					if (cipherMode == 'v') {
+						cipher = new VigenereCipher(key, alphabet.getSigns());
+						typeTextMenu(encryptDecryptMode, cipher);
+					}
+				}
+				
+				catch (IllegalArgumentException e) {
+					System.out.println("\nPlease type correct key.");
+				}
+			}
 		}
-		else if (choice == 2) {
-		}		
+	}
+
+	private void typeTextMenu(char encryptDecryptMode, Cipher cipher) {
+//		int choice = uIScanner.scanSelectionList("\nType:\n1 - to type text\n2 - to return", 1, 2);
+//		
+//		if (choice == 1) {
+//			String textToEncryptDecrypt = uIScanner.scanString("/nPlease type text to convert:");
+//			
+//			if (encryptDecryptMode == 'e' && cipherMode == 'c') {
+//				
+//			}
+//			
+//		}
+//		else if (choice == 2) {
+//		}		
 	}
 
 	private static void encryptMenu(char mode) {
